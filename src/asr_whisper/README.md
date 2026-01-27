@@ -19,4 +19,11 @@ source install/setup.bash
 ros2 run asr_whisper whisper_node
 ```
 
-Transcriptions are published to `/asr/transcript`.
+In a second terminal:
+```bash
+source install/setup.bash
+ros2 topic echo /asr/transcript
+```
+
+Example output:
+data: "go to the kitchen"
