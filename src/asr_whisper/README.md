@@ -1,6 +1,6 @@
-# ROS2 Multimodal Agent
+# ROS2 ASR Node
 
-ROS2 workspace with Whisper-based speech recognition.
+Whisper-based speech recognition.
 
 ## Installation
 
