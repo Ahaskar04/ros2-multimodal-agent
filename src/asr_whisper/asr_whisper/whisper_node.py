@@ -46,7 +46,7 @@ class WhisperNode(Node):
         try:
             self.q.put_nowait(indata.copy())  # Non-blocking put
         except queue.Full:
-            self.get_logger().warn("Audio queue full, dropping frame")
+            self.get_logger().warning("Audio queue full, dropping frame")
     
     def listen(self):
         buffer = []
@@ -54,7 +54,10 @@ class WhisperNode(Node):
         process_every = 8  # Process every 4 seconds (8 * 0.5s)
         
         while rclpy.ok():
-            data = self.q.get(timeout=1)
+            try:
+                data = self.q.get(timeout=1)
+            except queue.Empty:
+                continue
             buffer.append(data)
             chunk_count += 1
             
@@ -92,6 +95,11 @@ class WhisperNode(Node):
                 buffer = []
                 chunk_count = 0
 
+    def destroy_node(self):
+        self.stream.stop()
+        self.stream.close()
+        super().destroy_node()
+
 def main(args=None):
     rclpy.init(args=args)
     node = WhisperNode()
@@ -100,7 +108,7 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
     node.destroy_node()
-    rclpy.shutdown()
+    rclpy.try_shutdown()
 
 if __name__ == '__main__':
     main()
