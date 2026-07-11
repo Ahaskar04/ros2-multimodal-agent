@@ -1,0 +1,19 @@
+langchain==0.3.25
+langchain-openai==0.3.16
+langchain-anthropic==0.3.13
+langchain-ollama==0.3.2
+langchain-google-genai==2.1.4
+langchain-community==0.3.23
+langchain-core==0.3.59
+python-dotenv==1.1.0
+black==25.1.0
+# rclpy is provided by the system ROS 2 (Jazzy) install — do NOT pip-install it.
+# rclpy==3.3.16
+pydantic==2.11.3
+# numpy is provided by the ROS 2 stack; let pip resolve a compatible version if needed.
+# numpy==1.26.4
+google-ai-generativelanguage==0.6.18
+langchain-cohere==0.4.4
+# Pin cohere: langchain-cohere 0.4.4 breaks with cohere>=5.16 (ChatResponse removed).
+cohere==5.15.0
+langchain-mistralai==0.2.10
