@@ -1,6 +1,6 @@
 # ros2-multimodal-agent
 
-A ROS 2 workspace of LLM-driven agent nodes.
+A ROS 2 workspace of LLM-driven agent nodes that turn natural language into robot behavior.
 
 ## Packages
 
